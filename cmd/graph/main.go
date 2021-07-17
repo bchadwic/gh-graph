@@ -12,7 +12,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/bchadwic/gh-graph/pkg/color"
 	"github.com/bchadwic/gh-graph/pkg/stats"
-	"github.com/charmbracelet/lipgloss"
 	lg "github.com/charmbracelet/lipgloss"
 	"github.com/cli/cli/git"
 	"github.com/spf13/cobra"
@@ -112,8 +111,8 @@ func printGraph(opts *GraphOptions, graph [][]int, stats *stats.Stats) {
 		fmt.Sprintf("%s\ncontributions in the last year: %d\nlongest streak: %d, average: %.3f/day, best day: %d",
 			"github.com/"+opts.Username, stats.TotalContributions, stats.LongestStreak, stats.AveragePerDay, stats.BestDay))
 
-	dialogBoxStyle := lipgloss.NewStyle().SetString(b.String()).
-		Border(lipgloss.RoundedBorder()).
+	dialogBoxStyle := lg.NewStyle().SetString(b.String()).
+		Border(lg.RoundedBorder()).
 		Margin(1).
 		BorderTop(true).
 		BorderLeft(true).

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/bchadwic/gh-graph/pkg/stats"
-	lp "github.com/charmbracelet/lipgloss"
+	"github.com/muesli/termenv"
 )
 
 const (
@@ -38,7 +38,7 @@ func (cp *ColorPalette) Initialize(stats *stats.Stats) *ColorPalette {
 		curr = (curr / GroupFormRate) + 1
 	}
 
-	if lp.HasDarkBackground() {
+	if termenv.HasDarkBackground() {
 		for i := 0; i < Catagories; i++ {
 			cp.Colors = append(cp.Colors, Color{
 				R: 30,
@@ -60,7 +60,7 @@ func (cp *ColorPalette) Initialize(stats *stats.Stats) *ColorPalette {
 }
 
 func (cp *ColorPalette) GetColor(colorIndex int) string {
-	for i, e := range cp.Limits[:Catagories-1] {
+	for i, e := range cp.Limits {
 		if colorIndex < e {
 			return cp.Colors[i].Hex()
 		}
