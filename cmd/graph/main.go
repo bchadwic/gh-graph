@@ -46,6 +46,8 @@ func NewCmdGraph() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runGraph(opts)
 		},
+		SilenceErrors: true,
+		SilenceUsage:  true,
 	}
 
 	cmd.Flags().StringVarP(&opts.Username, "username", "u", "", "Specify a user")
@@ -75,6 +77,9 @@ func runGraph(opts *GraphOptions) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
+		if resp.StatusCode == 404 {
+			return fmt.Errorf("user %s was not found on GitHub, choose a new user with -u / --user", opts.Username)
+		}
 		return fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}
 
