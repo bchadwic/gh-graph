@@ -1,13 +1,18 @@
 ## gh-graph
-An extension for the GitHub Cli application that displays your current contribution graph in the terminal
+An extension for the GitHub Cli application that displays your current contribution graph in the terminal (logged out contribution graph)
 
 ### Installation
 
-TBD (Pending cli/cli extension implementation relase notes)
+Using gh cli
+```
+$ gh extensions install bchadwic/gh-graph
+```
 
 ### Usage
 
 ```
+$ gh graph -h
+
 Display your GitHub contribution graph in the terminal
 
 Usage:
@@ -15,11 +20,10 @@ Usage:
 
 Flags:
   -h, --help              help for graph
-  -m, --matrix            Set cells to matrix digital rain
-  -s, --solid             Set cells to solid blocks
   -u, --username string   Specify a user
 
 ```
+
 ### Examples
 
 dark:
